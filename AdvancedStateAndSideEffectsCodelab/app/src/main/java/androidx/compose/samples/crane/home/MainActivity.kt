@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MainScreen(onExploreItemClicked: OnExploreItemClicked) {
     Surface(color = MaterialTheme.colors.primary) {
-        var showLandScreen by remember { mutableStateOf(false) }
+        var showLandScreen by remember { mutableStateOf(true) }
         if (showLandScreen) {
             LandingScreen(onTimeout = { showLandScreen = false })
         } else {
