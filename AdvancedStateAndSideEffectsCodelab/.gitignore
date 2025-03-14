@@ -1,12 +1,26 @@
-*.iml
-.gradle
-/local.properties
-/.idea/*
+# System-specific files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*~
+
+# Build output
+build/
+bin/
+out/
+
+# Dependency caches
+.gradle/
+.m2/
+
+# IDE-specific files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Other
 local.properties
-/buildSrc/.gradle/*
-.kotlin/
+*.log
