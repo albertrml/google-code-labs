@@ -39,7 +39,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -161,7 +161,7 @@ private fun MapViewContainer(
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(cameraPosition))
     }
 
-    var zoom by rememberSaveable(map) { mutableStateOf(InitialZoom) }
+    var zoom by rememberSaveable(map) { mutableFloatStateOf(InitialZoom) }
     ZoomControls(zoom) {
         zoom = it.coerceIn(MinZoom, MaxZoom)
     }
