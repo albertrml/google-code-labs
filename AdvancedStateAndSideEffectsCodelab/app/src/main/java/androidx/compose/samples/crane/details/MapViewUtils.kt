@@ -25,6 +25,7 @@ import androidx.compose.samples.crane.R
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.google.android.libraries.maps.GoogleMap
 import com.google.android.libraries.maps.MapView
@@ -33,7 +34,9 @@ import com.google.android.libraries.maps.MapView
  * Remembers a MapView and gives it the lifecycle of the current LifecycleOwner
  */
 @Composable
-fun rememberMapViewWithLifecycle(): MapView {
+fun rememberMapViewWithLifecycle(
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
+): MapView {
     val context = LocalContext.current
     val mapView = remember {
         MapView(context).apply {
@@ -41,12 +44,11 @@ fun rememberMapViewWithLifecycle(): MapView {
         }
     }
 
-    val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(key1 = lifecycle, key2 = mapView) {
+    DisposableEffect(key1 = lifecycleOwner, key2 = mapView) {
         val lifecycleObserver = getMapLifecycleObserver(mapView)
-        lifecycle.addObserver(lifecycleObserver)
+        lifecycleOwner.lifecycle.addObserver(lifecycleObserver)
         onDispose {
-            lifecycle.removeObserver(lifecycleObserver)
+            lifecycleOwner.lifecycle.removeObserver(lifecycleObserver)
         }
     }
 
