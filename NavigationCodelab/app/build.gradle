@@ -106,6 +106,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:3.6.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.6.1"
 
+    // Navigation testing dependencies
+    androidTestImplementation "androidx.navigation:navigation-testing:2.8.9"
+
     // Compose testing dependencies
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
     debugImplementation "androidx.compose.ui:ui-test-manifest"
